@@ -5,6 +5,7 @@ public class RequestProductInsert {
     private String category;
     private Integer stock;
     private Integer minStock;
+    private Double price;
     
     public Integer getMinStock() {
         return minStock;
@@ -37,5 +38,13 @@ public class RequestProductInsert {
     public void setName(String name) {
         this.name = name;
     }
+
+	public Double getPrice() {
+		return price;
+	}
+
+	public void setPrice(Double price) {
+		this.price = price;
+	}
 
 }

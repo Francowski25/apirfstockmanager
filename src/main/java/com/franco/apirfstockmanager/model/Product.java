@@ -4,23 +4,24 @@ public class Product {
     private String idProduct;
     private String name;
     private String category;
-    private Integer stock;
-    private Integer minStock;
+    private int stock;
+    private int minStock;
+    private double price;
     private String status;
 
-    public Integer getMinStock() {
+    public int getMinStock() {
         return minStock;
     }
 
-    public void setMinStock(Integer minStock) {
+    public void setMinStock(int minStock) {
         this.minStock = minStock;
     }
 
-    public Integer getStock() {
+    public int getStock() {
         return stock;
     }
 
-    public void setStock(Integer stock) {
+    public void setStock(int stock) {
         this.stock = stock;
     }
 
@@ -55,4 +56,13 @@ public class Product {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
 }

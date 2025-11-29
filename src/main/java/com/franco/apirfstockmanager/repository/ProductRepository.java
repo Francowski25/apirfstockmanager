@@ -15,9 +15,9 @@ public class ProductRepository {
         return this.listProduct;
     }
 
-    public Product save(Product request){
-        this.listProduct.add(request);
-        return request;
+    public Product save(Product product){
+        this.listProduct.add(product);
+        return product;
     }
 
     public Product findById(String id){

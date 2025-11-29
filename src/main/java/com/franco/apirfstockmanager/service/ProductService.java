@@ -45,12 +45,17 @@ public class ProductService {
             message.setMessage(Message.warning("El stock mínimo no debe ser mayor que el stock"));
             return message;
         }
+    	if(request.getPrice() == null) {
+    		message.setMessage(Message.warning("El precio debe ser mayor a 0.0"));
+    		return message;
+    	}
       	Product product = new Product();
         product.setIdProduct(UUID.randomUUID().toString());
         product.setCategory(request.getCategory());
         product.setName(request.getName());
         product.setStock(request.getStock());
         product.setMinStock(request.getMinStock());
+        product.setPrice(request.getPrice());
         product.setStatus(status.isStatus(request.getStock()));
         this.productRepository.save(product);
 
@@ -61,6 +66,7 @@ public class ProductService {
         response.setName(product.getName());
         response.setStock(product.getStock());
         response.setMinStock(product.getMinStock());
+        response.setPrice(product.getPrice());
         response.setStatus(product.getStatus());
         
 		return response;
@@ -69,10 +75,11 @@ public class ProductService {
     public Object listar(){
         ResponseMessage message = new ResponseMessage();
         List<Product> products = this.productRepository.findAll();
-        if(products == null) {
+        if(products.isEmpty()) {
         	message.setMessage(Message.error("No existe productos en la lista"));
         	return message;
         }
+        
         ResponseProductList response = new ResponseProductList();
         response.setProducts(products);
     	return response;
