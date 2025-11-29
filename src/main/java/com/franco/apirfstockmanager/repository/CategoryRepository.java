@@ -19,6 +19,7 @@ public class CategoryRepository {
 		this.listCategories.add(category);
 		return category;
 	}
+	
     public Category findById(String id){
     	for(Category c : this.listCategories) {
     		if(c.getIdCategory().equalsIgnoreCase(id)) {
@@ -26,5 +27,14 @@ public class CategoryRepository {
     		}
     	}
         return null;
+    }
+    
+    public boolean findByName(String name) {
+    	for(Category c : this.listCategories) {
+    		if(c.getName().equalsIgnoreCase(name)) {
+    			return true;
+    		}
+    	}
+        return false;
     }
 }

@@ -1,4 +1,4 @@
-package com.franco.apirfstockmanager.responseobject;
+package com.franco.apirfstockmanager.responseobject.product;
 
 public class ResponseProductStatus {
 	private String status;

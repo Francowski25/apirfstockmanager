@@ -1,4 +1,4 @@
-package com.franco.apirfstockmanager.responseobject;
+package com.franco.apirfstockmanager.responseobject.product;
 
 import com.franco.apirfstockmanager.model.Product;
 

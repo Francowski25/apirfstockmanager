@@ -1,4 +1,4 @@
-package com.franco.apirfstockmanager.responseobject;
+package com.franco.apirfstockmanager.responseobject.message;
 
 import com.franco.apirfstockmanager.util.Message;
 

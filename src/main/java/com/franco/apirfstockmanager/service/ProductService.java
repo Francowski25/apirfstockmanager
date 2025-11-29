@@ -6,13 +6,14 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.franco.apirfstockmanager.model.Product;
+import com.franco.apirfstockmanager.repository.CategoryRepository;
 import com.franco.apirfstockmanager.repository.ProductRepository;
 import com.franco.apirfstockmanager.requestobject.RequestProductInsert;
-import com.franco.apirfstockmanager.responseobject.ResponseMessage;
-import com.franco.apirfstockmanager.responseobject.ResponseProductById;
-import com.franco.apirfstockmanager.responseobject.ResponseProductInsert;
-import com.franco.apirfstockmanager.responseobject.ResponseProductList;
-import com.franco.apirfstockmanager.responseobject.ResponseProductStatus;
+import com.franco.apirfstockmanager.responseobject.message.ResponseMessage;
+import com.franco.apirfstockmanager.responseobject.product.ResponseProductById;
+import com.franco.apirfstockmanager.responseobject.product.ResponseProductInsert;
+import com.franco.apirfstockmanager.responseobject.product.ResponseProductList;
+import com.franco.apirfstockmanager.responseobject.product.ResponseProductStatus;
 import com.franco.apirfstockmanager.util.Message;
 
 @Service
@@ -20,6 +21,8 @@ public class ProductService {
 
     @Autowired
     private ProductRepository productRepository;
+    @Autowired
+    private CategoryRepository categoryRepository;
     
     public Object crear(RequestProductInsert request){
         ResponseMessage message = new ResponseMessage();
@@ -33,6 +36,10 @@ public class ProductService {
             message.setMessage(Message.warning("La categoría no debe estar vacío"));
             return message;
         }
+    	if(!this.categoryRepository.findByName(request.getCategory())) {
+    		message.setMessage(Message.error("La categoria no existe en el sistema"));
+    	    return message;
+    	}
     	if (request.getMinStock() == null || request.getStock() == null) {
     	    message.setMessage(Message.warning("Los stocks no deben estar vacios"));
     	    return message;

@@ -4,7 +4,7 @@ public class Category {
 	    private String idCategory;
 	    private String name;
 	    private String description;
-	    private boolean status;
+	    private String status;
 
 	    public String getIdCategory() {
 	        return idCategory;
@@ -30,11 +30,13 @@ public class Category {
 	        this.description = description;
 	    }
 
-	    public boolean isStatus() {
-	        return status;
-	    }
+		public String getStatus() {
+			return status;
+		}
 
-	    public void setStatus(boolean status) {
-	        this.status = status;
-	    }
+		public void setStatus(String status) {
+			this.status = status;
+		}
+
+
 }
