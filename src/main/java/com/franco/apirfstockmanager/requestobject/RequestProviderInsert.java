@@ -1,21 +1,11 @@
-package com.franco.apirfstockmanager.model;
+package com.franco.apirfstockmanager.requestobject;
 
-import java.util.Date;
-
-public class Provider {
-	private String idProvider;
+public class RequestProviderInsert {
 	private String ruc;
-	private int phone;
+	private Integer phone;
 	private String email;
 	private String status;
-	private Date cratedAt;
 	
-	public String getIdProvider() {
-		return idProvider;
-	}
-	public void setIdProvider(String idProvider) {
-		this.idProvider = idProvider;
-	}
 	public String getRuc() {
 		return ruc;
 	}
@@ -40,10 +30,5 @@ public class Provider {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public Date getCratedAt() {
-		return cratedAt;
-	}
-	public void setCratedAt(Date cratedAt) {
-		this.cratedAt = cratedAt;
-	}
+
 }

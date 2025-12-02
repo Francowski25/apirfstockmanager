@@ -1,5 +1,6 @@
 package com.franco.apirfstockmanager.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -49,23 +50,38 @@ public class ProductService {
             return message;
         }
     	if(request.getMinStock() > request.getStock()) {
-            message.setMessage(Message.warning("El stock mínimo no debe ser mayor que el stock"));
+            message.setMessage(Message.warning("El stock actual debe ser mayor que stock mínimo"));
             return message;
         }
+    	if(request.getMaxStock() < request.getStock()) {
+            message.setMessage(Message.warning("El stock máximo debe ser mayor que el stock actual"));
+            return message;    		
+    	}
     	if(request.getPrice() == null) {
+    		message.setMessage(Message.warning("El precio no debe estar vacio"));
+    		return message;
+    	}
+    	if(request.getPrice() <= 0) {
     		message.setMessage(Message.warning("El precio debe ser mayor a 0.0"));
     		return message;
     	}
+    	if(request.getLocation().isBlank() || request.getLocation() == null) {
+    		message.setMessage(Message.warning("La ubicación no debe estar vacío"));
+    		return message;
+    	}
+    	
       	Product product = new Product();
         product.setIdProduct(UUID.randomUUID().toString());
         product.setCategory(request.getCategory());
         product.setName(request.getName());
         product.setStock(request.getStock());
         product.setMinStock(request.getMinStock());
+        product.setMaxStock(request.getMaxStock());
         product.setPrice(request.getPrice());
         product.setStatus(status.isStatus(request.getStock()));
+        product.setLocation(request.getLocation());
+        product.setCreatedAt(new Date());
         this.productRepository.save(product);
-
 
     	ResponseProductInsert response = new ResponseProductInsert();
         response.setIdProduct(product.getIdProduct());
@@ -73,8 +89,11 @@ public class ProductService {
         response.setName(product.getName());
         response.setStock(product.getStock());
         response.setMinStock(product.getMinStock());
+        response.setMaxStock(product.getMaxStock());
         response.setPrice(product.getPrice());
         response.setStatus(product.getStatus());
+        response.setLocation(product.getLocation());
+        response.setCreatedAt(product.getCreatedAt());
         
 		return response;
     }

@@ -1,8 +1,8 @@
-package com.franco.apirfstockmanager.model;
+package com.franco.apirfstockmanager.responseobject.provider;
 
 import java.util.Date;
 
-public class Provider {
+public class ResponseProviderInsert {
 	private String idProvider;
 	private String ruc;
 	private int phone;

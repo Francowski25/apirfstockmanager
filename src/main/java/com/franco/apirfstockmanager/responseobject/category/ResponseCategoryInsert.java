@@ -1,10 +1,13 @@
 package com.franco.apirfstockmanager.responseobject.category;
 
+import java.util.Date;
+
 public class ResponseCategoryInsert {
     private String idCategory;
     private String name;
     private String description;
     private String status;
+    private Date createdAt;
 
     public String getIdCategory() {
         return idCategory;
@@ -36,5 +39,13 @@ public class ResponseCategoryInsert {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
 	}
 }

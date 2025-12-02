@@ -1,14 +1,19 @@
 package com.franco.apirfstockmanager.responseobject.product;
 
+import java.util.Date;
+
 public class ResponseProductInsert {
     private String idProduct;
     private String name;
     private String category;
+    private double price;
     private int stock;
     private int minStock;
-    private double price;
+    private int maxStock;
+    private String location;
     private String status;
-    
+    private Date createdAt;
+
     public int getMinStock() {
         return minStock;
     }
@@ -65,5 +70,28 @@ public class ResponseProductInsert {
 		this.price = price;
 	}
 
+	public int getMaxStock() {
+		return maxStock;
+	}
+
+	public void setMaxStock(int maxStock) {
+		this.maxStock = maxStock;
+	}
+
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
 
 }

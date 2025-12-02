@@ -1,5 +1,6 @@
 package com.franco.apirfstockmanager.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -36,6 +37,7 @@ public class CategoryService {
 		category.setName(request.getName());
 		category.setDescription(request.getDescription());
 		category.setStatus("disponible");
+		category.setCreatedAt(new Date());
         this.categoryRepository.save(category);
 
 		ResponseCategoryInsert response = new ResponseCategoryInsert();
@@ -43,6 +45,7 @@ public class CategoryService {
 		response.setName(category.getName());
 		response.setDescription(category.getDescription());
 		response.setStatus(category.getStatus());
+		response.setCreatedAt(category.getCreatedAt());
 		
 		return response;
 	}
